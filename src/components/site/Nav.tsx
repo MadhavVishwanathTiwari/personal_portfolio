@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { profile } from "@/data/profile";
+import { ScrollProgress } from "@/components/motion";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -63,6 +64,7 @@ export function Nav() {
           </a>
         </div>
       </nav>
+      <ScrollProgress />
     </header>
   );
 }

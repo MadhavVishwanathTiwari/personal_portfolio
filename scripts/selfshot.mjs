@@ -14,6 +14,7 @@ await mkdir(OUT, { recursive: true });
 
 const [route = "/", widthArg = "1440", scrollArg = "0", name = "shot"] =
   process.argv.slice(2);
+const reducedMotion = process.argv.includes("--reduced-motion");
 const width = Number(widthArg);
 
 const browser = await puppeteer.launch({
@@ -28,6 +29,11 @@ await page.setViewport({
   deviceScaleFactor: 1,
   isMobile: width < 700,
 });
+if (reducedMotion) {
+  await page.emulateMediaFeatures([
+    { name: "prefers-reduced-motion", value: "reduce" },
+  ]);
+}
 await page.goto("http://localhost:3000" + route, {
   waitUntil: "networkidle2",
   timeout: 90_000,

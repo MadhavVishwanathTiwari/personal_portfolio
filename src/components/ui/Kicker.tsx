@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Tick } from "@/components/motion";
 
-/** Uppercase mono micro-label with a leading volt tick. */
+/** Uppercase mono micro-label with a leading volt tick that draws itself in. */
 export function Kicker({
   children,
   className,
@@ -16,7 +17,7 @@ export function Kicker({
         className,
       )}
     >
-      <span aria-hidden className="h-px w-4 bg-volt-dim" />
+      <Tick className="h-px w-4 bg-volt-dim" />
       {children}
     </span>
   );

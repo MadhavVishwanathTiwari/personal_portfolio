@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Kicker } from "./Kicker";
+import { Tick } from "@/components/motion";
 
 export function Section({
   id,
@@ -29,7 +30,7 @@ export function Section({
             {lede && (
               <p className="mt-4 text-[15px] leading-relaxed text-text-dim">{lede}</p>
             )}
-            <div className="rule-fade mt-8" />
+            <Tick className="rule-fade mt-8 block" />
           </header>
         )}
         {children}

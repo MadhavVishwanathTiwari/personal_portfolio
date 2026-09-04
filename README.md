@@ -59,6 +59,16 @@ Targets are declared at the top of `scripts/capture.mjs`. Sections below the
 fold are reached by CSS selector (`anchor`), never by a pixel offset, because
 a pixel offset silently rots the moment the target site changes.
 
+After adding captures, shrink them:
+
+```bash
+node scripts/optimize-shots.mjs           # caps width at 2200, palette PNG
+node scripts/optimize-shots.mjs --dry-run
+```
+
+Filenames never change, so imports keep working. It skips placeholders (they
+carry a marker chunk) and refuses to make any file larger.
+
 ### Placeholders
 
 `scripts/placeholders.mjs` generates a stand-in image at the exact path and
@@ -68,6 +78,22 @@ for a marker appended to the placeholder file.
 
 Any image currently reading **CAPTURE PENDING** on the site is one of these.
 See `docs/pending-shots.md` for the list.
+
+## Videos and credentials
+
+`docs/adding-media.md` covers both: Loom embeds by share id, local mp4s from
+`public/media/`, and the redaction rule for anything carrying personal data.
+`scripts/redact-certificate.mjs` paints the redaction into a new PNG rather
+than layering it in CSS, because a CSS overlay leaves the original one
+"view source" away.
+
+## Claims
+
+Nothing on this site states a number it cannot support.
+`docs/icu-sota-verification.md` is the worked example: a CV claim about
+beating the state of the art was checked against all twelve targets and the
+literature, did not hold, and is therefore not on the site. If you add a
+metric, be able to point at where it comes from.
 
 ## Design system
 
