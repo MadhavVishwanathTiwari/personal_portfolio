@@ -18,14 +18,14 @@ filename must match exactly. No import to add, no data file to edit. See
 file in `src/data/projects/`:
 
 ```ts
-import queue from "@/assets/shots/outreach-ops-crm/03-queue-desktop.png";
+import contacts from "@/assets/shots/outreach-ops-crm/02-contacts-desktop.png";
 
 // …inside shots: []
 {
-  src: queue,
-  alt: "The scheduled send queue",
+  src: contacts,
+  alt: "The contacts directory",
   device: "desktop",
-  chrome: "crm.autoreceptionist.io/queue",
+  chrome: "crm.autoreceptionist.io/contacts",
   caption: "Optional. One sentence, and only if it adds something.",
   redacted: true, // set when data has been blurred or replaced
 },

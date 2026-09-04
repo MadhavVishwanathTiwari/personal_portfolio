@@ -77,10 +77,7 @@ const TARGETS = [
   { project: "p4-realty", name: "04-hero", url: P4, viewport: MOBILE },
 
   // ── Behind a login: node scripts/capture.mjs --gated ──────────
-  { project: "outreach-ops-crm", name: "01-write", url: `${CRM}/write`, viewport: DESKTOP, gated: true },
-  { project: "outreach-ops-crm", name: "02-leads", url: `${CRM}/leads`, viewport: DESKTOP, gated: true },
-  { project: "outreach-ops-crm", name: "03-queue", url: `${CRM}/queue`, viewport: DESKTOP, gated: true },
-  { project: "outreach-ops-crm", name: "04-pipeline", url: `${CRM}/pipeline`, viewport: DESKTOP, gated: true },
+  { project: "outreach-ops-crm", name: "01-pipeline", url: `${CRM}/pipeline`, viewport: DESKTOP, gated: true },
 
   // The contacts directory is a list of real named people, so it is captured
   // filtered to example.com, which is exactly the set of seeded demo leads
@@ -88,7 +85,7 @@ const TARGETS = [
   // over work_email, so this is a hard filter rather than a visual one.
   {
     project: "outreach-ops-crm",
-    name: "05-contacts",
+    name: "02-contacts",
     url: `${CRM}/contacts`,
     viewport: DESKTOP,
     gated: true,

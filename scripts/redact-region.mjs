@@ -28,7 +28,7 @@ const FORCE = process.argv.includes("--force");
  * `note` is why, and exists so a future reader does not undo it by accident.
  */
 const REDACTIONS = {
-  "shots/outreach-ops-crm/04-pipeline-desktop.png": [
+  "shots/outreach-ops-crm/01-pipeline-desktop.png": [
     {
       // The Prospect column holds real imported businesses that are being
       // cold-emailed. Every other column on that board is the seeded demo
@@ -42,37 +42,6 @@ const REDACTIONS = {
     },
   ],
 
-  "shots/outreach-ops-crm/05-contacts-desktop.png": [
-    {
-      // Names are already painted out by hand, but company plus title plus
-      // city still points at one person: the owner of a named HVAC firm in
-      // Dallas is a specific human. The sidebar is the same list, 533 of
-      // them. Pixelating both leaves the screen's structure, which is the
-      // part worth showing, and takes out the part that identifies anyone.
-      note: "contact list: real companies",
-      top: 18.0,
-      left: 0.3,
-      width: 18.4,
-      height: 81.5,
-      mode: "pixelate",
-    },
-    {
-      note: "detail pane: company and location",
-      top: 14.4,
-      left: 24.0,
-      width: 18.0,
-      height: 3.0,
-      mode: "pixelate",
-    },
-    {
-      note: "detail pane: location",
-      top: 23.6,
-      left: 24.0,
-      width: 8.0,
-      height: 3.0,
-      mode: "pixelate",
-    },
-  ],
 };
 
 const pct = (value, total) => Math.round((value / 100) * total);

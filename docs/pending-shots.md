@@ -43,20 +43,18 @@ the path listed below. The filename must match exactly.
 
 ---
 
-## Outreach Ops CRM — 4 shots
+## Outreach Ops CRM — done
 
-Prefer screens that are structurally interesting and data-light. Avoid
-anything showing real prospect names, emails or phone numbers; if a screen
-has to show rows, blur or replace them first. Each of these is already
-marked `data redacted` in the case study.
+Both shots are in: `01-pipeline-desktop.png` and `02-contacts-desktop.png`.
+The pipeline board's Prospect column is pixelated by
+`scripts/redact-region.mjs` because those rows are real businesses; every
+other column is the seeded `example.com` demo data. The contacts capture was
+taken against seeded records, so nothing on it is real and it needs no
+redaction.
 
-| Path | What to capture |
-| --- | --- |
-| `src/assets/shots/outreach-ops-crm/01-write-desktop.png` | `/write` — the three-pane composer. This is the hero shot of the case study, so it matters most. |
-| `src/assets/shots/outreach-ops-crm/02-leads-desktop.png` | `/leads` — the dense virtualised grid |
-| `src/assets/shots/outreach-ops-crm/03-queue-desktop.png` | `/queue` — scheduled sends with their computed local times |
-| `src/assets/shots/outreach-ops-crm/05-contacts-desktop.png` | `/contacts` — **type `example.com` into the search box first.** That box is a substring match over `work_email`, so it filters the directory down to exactly the seeded demo leads and nothing real. Unfiltered, this screen is 533 named individuals with employer and job title, which is the one screen in the app that must not be published as-is. `capture.mjs` does the filtering for you. |
-| `src/assets/shots/outreach-ops-crm/04-pipeline-desktop.png` | `/pipeline` — the stage board. **The Prospect column holds real imported leads.** Drop the file, then run `node scripts/redact-region.mjs`, which pixelates that column. Every other column is the seeded `example.com` demo data and is safe as-is. |
+The case study deliberately shows only these two. `/write`, `/leads` and
+`/queue` were dropped: two screens that carry the argument beat five that
+repeat it.
 
 ## KFIQ intern platform — 1 shot
 

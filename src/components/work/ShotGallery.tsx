@@ -5,7 +5,13 @@ import { ShotFigure } from "./ShotFigure";
  * Desktop shots run full measure. Consecutive mobile shots pair up, because a
  * lone 390x844 image at full width is a column of dead space.
  */
-export function ShotGallery({ shots }: { shots: Shot[] }) {
+export function ShotGallery({
+  shots,
+  sizes,
+}: {
+  shots: Shot[];
+  sizes?: string;
+}) {
   if (shots.length === 0) return null;
 
   const desktop = shots.filter((s) => s.device === "desktop");
@@ -14,7 +20,7 @@ export function ShotGallery({ shots }: { shots: Shot[] }) {
   return (
     <div className="space-y-10">
       {desktop.map((shot, i) => (
-        <ShotFigure key={`d-${i}`} shot={shot} />
+        <ShotFigure key={`d-${i}`} shot={shot} sizes={sizes} />
       ))}
 
       {mobile.length > 0 && (

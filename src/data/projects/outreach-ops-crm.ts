@@ -1,9 +1,6 @@
 import type { FeaturedProject } from "../types";
-import write from "@/assets/shots/outreach-ops-crm/01-write-desktop.png";
-import leads from "@/assets/shots/outreach-ops-crm/02-leads-desktop.png";
-import queue from "@/assets/shots/outreach-ops-crm/03-queue-desktop.png";
-import pipeline from "@/assets/shots/outreach-ops-crm/04-pipeline-desktop.png";
-import contacts from "@/assets/shots/outreach-ops-crm/05-contacts-desktop.png";
+import pipeline from "@/assets/shots/outreach-ops-crm/01-pipeline-desktop.png";
+import contacts from "@/assets/shots/outreach-ops-crm/02-contacts-desktop.png";
 
 export const outreachOpsCrm: FeaturedProject = {
   featured: true,
@@ -63,11 +60,23 @@ export const outreachOpsCrm: FeaturedProject = {
     { layer: "Testing", items: ["Vitest", "Template lint parity tests"] },
   ],
   shots: [
-    { src: write, alt: "The three-pane composer", device: "desktop", chrome: "crm.autoreceptionist.io/write", caption: "The composer. You write; the app decides when it goes out.", redacted: true },
-    { src: leads, alt: "The virtualised lead grid", device: "desktop", chrome: "crm.autoreceptionist.io/leads", redacted: true },
-    { src: queue, alt: "The scheduled send queue", device: "desktop", chrome: "crm.autoreceptionist.io/queue", redacted: true },
-    { src: pipeline, alt: "The pipeline board", device: "desktop", chrome: "crm.autoreceptionist.io/pipeline", redacted: true },
-    { src: contacts, alt: "The contacts directory", device: "desktop", chrome: "crm.autoreceptionist.io/contacts", caption: "Who a person is lives here; what the machine should do with them lives on Leads.", redacted: true },
+    {
+      src: pipeline,
+      alt: "The pipeline board",
+      device: "desktop",
+      chrome: "crm.autoreceptionist.io/pipeline",
+      caption:
+        "Machine-derived status runs left to right and can only move forward. The stage on each card is the human's opinion and moves any way they like. The Prospect column is blurred because those are real businesses being contacted.",
+      redacted: true,
+    },
+    {
+      src: contacts,
+      alt: "The contacts directory",
+      device: "desktop",
+      chrome: "crm.autoreceptionist.io/contacts",
+      caption:
+        "Who a person is lives here; what the machine should do with them lives on Leads. Captured against seeded records, so every name and address on screen is synthetic.",
+    },
   ],
   outcome:
     "In daily use and not publicly reachable, so there is no link to click here. It replaced the spreadsheet completely and has run the outbound pipeline since. Screenshots are from the live application with prospect data removed.",

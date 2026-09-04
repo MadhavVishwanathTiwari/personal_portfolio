@@ -84,14 +84,28 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         </section>
       )}
 
+      {/* Two columns only pay for themselves when there are enough shots to
+          fill the second one. With one left over, the image column renders a
+          thumbnail beside four paragraphs and a column of dead space, so the
+          section stacks instead and the shot gets the full width. */}
       <section className="shell mt-24">
         <Kicker>How it works</Kicker>
-        <div className="mt-6 grid gap-12 lg:grid-cols-[minmax(0,34rem)_1fr] lg:gap-16">
-          <Prose paragraphs={project.approach} />
-          <div className="min-w-0">
-            <ShotGallery shots={restShots} />
+        {restShots.length > 1 ? (
+          <div className="mt-6 grid gap-12 lg:grid-cols-[minmax(0,34rem)_1fr] lg:gap-16">
+            <Prose paragraphs={project.approach} />
+            <div className="min-w-0">
+              <ShotGallery shots={restShots} />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="mt-6 space-y-14">
+            <Prose paragraphs={project.approach} />
+            <ShotGallery
+              shots={restShots}
+              sizes="(max-width: 1200px) 100vw, 1100px"
+            />
+          </div>
+        )}
       </section>
 
       <section className="shell mt-24 md:mt-32">

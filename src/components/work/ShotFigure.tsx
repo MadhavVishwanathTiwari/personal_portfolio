@@ -4,9 +4,15 @@ import { cn } from "@/lib/utils";
 import { BrowserFrame } from "./BrowserFrame";
 
 /**
- * The aspect box is explicit and the source is a static import, so the space
- * is reserved before a single byte of the image arrives. That is the whole
- * layout-shift story for this site.
+ * The aspect box comes from the image's own intrinsic dimensions, which a
+ * static import gives us for free. An earlier version pinned every desktop
+ * shot to 16:10 and let object-cover crop the difference, which quietly ate
+ * the outer columns of anything wider — the CRM pipeline board is 2.07:1 and
+ * lost a column at each end. A case study is the one place the whole frame
+ * has to survive.
+ *
+ * The space is still reserved before a single byte arrives, because the
+ * ratio is known at build time. That is the entire layout-shift story here.
  */
 export function ShotFigure({
   shot,
@@ -19,16 +25,12 @@ export function ShotFigure({
   sizes?: string;
   className?: string;
 }) {
-  const isMobile = shot.device === "mobile";
-
   return (
     <figure className={cn("min-w-0", className)}>
       <BrowserFrame url={shot.chrome}>
         <div
-          className={cn(
-            "relative overflow-hidden bg-panel-2",
-            isMobile ? "aspect-[390/844]" : "aspect-[16/10]",
-          )}
+          className="relative overflow-hidden bg-panel-2"
+          style={{ aspectRatio: `${shot.src.width} / ${shot.src.height}` }}
         >
           <Image
             src={shot.src}
@@ -43,14 +45,16 @@ export function ShotFigure({
       </BrowserFrame>
 
       {(shot.caption || shot.redacted) && (
-        <figcaption className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+        <figcaption className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
           {shot.caption && (
-            <span className="text-[13px] leading-relaxed text-text-faint">
+            <span className="max-w-[68ch] text-[13px] leading-relaxed text-text-faint">
               {shot.caption}
             </span>
           )}
           {shot.redacted && (
-            <span className="mono-label text-text-faint/80">data redacted</span>
+            <span className="mono-label shrink-0 text-text-faint/80">
+              data redacted
+            </span>
           )}
         </figcaption>
       )}
