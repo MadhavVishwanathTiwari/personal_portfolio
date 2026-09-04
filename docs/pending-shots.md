@@ -42,7 +42,7 @@ marked `data redacted` in the case study.
 | `src/assets/shots/outreach-ops-crm/01-write-desktop.png` | `/write` — the three-pane composer. This is the hero shot of the case study, so it matters most. |
 | `src/assets/shots/outreach-ops-crm/02-leads-desktop.png` | `/leads` — the dense virtualised grid |
 | `src/assets/shots/outreach-ops-crm/03-queue-desktop.png` | `/queue` — scheduled sends with their computed local times |
-| `src/assets/shots/outreach-ops-crm/04-pipeline-desktop.png` | `/pipeline` — the stage board |
+| `src/assets/shots/outreach-ops-crm/04-pipeline-desktop.png` | `/pipeline` — the stage board. **The Prospect column holds real imported leads.** Drop the file, then run `node scripts/redact-region.mjs`, which pixelates that column. Every other column is the seeded `example.com` demo data and is safe as-is. |
 
 ## KFIQ intern platform — 1 shot
 

@@ -46,9 +46,18 @@ for await (const file of walk(ASSETS)) {
   // Placeholders carry a marker chunk that placeholders.mjs looks for to
   // decide whether a file is safe to regenerate. Re-encoding would strip it
   // and make a placeholder look like a real capture, so leave them alone.
-  if ((await readFile(file)).includes("capture-pending")) {
+  const bytes = await readFile(file);
+  if (bytes.includes("capture-pending")) {
     after += original;
     console.log(`  skip ${path.relative(ROOT, file)} (placeholder)`);
+    continue;
+  }
+
+  // Re-encoding would strip the redaction marker too, and a later
+  // redact-region run would then paint over an already-redacted file.
+  if (bytes.includes("region-redacted")) {
+    after += original;
+    console.log(`  skip ${path.relative(ROOT, file)} (redacted)`);
     continue;
   }
 
