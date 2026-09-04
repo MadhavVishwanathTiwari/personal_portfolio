@@ -2,6 +2,7 @@ import type { FeaturedProject } from "../types";
 import today from "@/assets/shots/synapse/01-today-desktop.png";
 import goals from "@/assets/shots/synapse/02-goals-desktop.png";
 import dashboard from "@/assets/shots/synapse/03-dashboard-desktop.png";
+import gym from "@/assets/shots/synapse/04-gym-desktop.png";
 
 export const synapse: FeaturedProject = {
   featured: true,
@@ -65,10 +66,37 @@ export const synapse: FeaturedProject = {
     { layer: "Testing", items: ["Vitest", "Restore drill", "Guarded destructive wipe"] },
   ],
   shots: [
-    { src: today, alt: "The fifteen-minute time ledger", device: "desktop", chrome: "synapse / today", redacted: true },
-    { src: goals, alt: "The goal graph", device: "desktop", chrome: "synapse / goals / map", redacted: true },
-    { src: dashboard, alt: "Adherence over time", device: "desktop", chrome: "synapse / dashboard", redacted: true },
+    {
+      src: today,
+      alt: "The fifteen-minute time ledger",
+      device: "desktop",
+      chrome: "synapse / today",
+      caption:
+        "Ninety-six slots. Inside the waking window every one is planned, actual, or explicitly unlogged, so a day with gaps reports the gaps.",
+    },
+    {
+      src: goals,
+      alt: "The goal graph",
+      device: "desktop",
+      chrome: "synapse / goals / map",
+      caption:
+        "A directed graph rather than a tree, because one piece of work usually serves more than one goal. Contribution weights sum to at most one per child so a rollup cannot double-count.",
+    },
+    {
+      src: dashboard,
+      alt: "Adherence over time",
+      device: "desktop",
+      chrome: "synapse / dashboard",
+      caption:
+        "Coverage, fidelity and allocation, plotted separately and never averaged into one number.",
+    },
+    {
+      src: gym,
+      alt: "Twelve weeks of training",
+      device: "desktop",
+      chrome: "synapse / gym",
+    },
   ],
   outcome:
-    "Finished and in daily use by one person: me. There is no public deployment and no sign-up, by design. It is in this portfolio because it is the clearest example of how I think about data correctness when nobody is forcing me to care.",
+    "Finished, and about to be used in anger: I start logging against it this week. There is no public deployment and no sign-up, by design. The screens here were captured against seeded acceptance data, which was deleted straight afterwards so that every number the dashboard reports from now on is a number about a real day. It is in this portfolio because it is the clearest example of how I think about data correctness when nobody is forcing me to care.",
 };

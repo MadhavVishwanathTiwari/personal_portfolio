@@ -65,16 +65,44 @@ by `scripts/import-kfiq-shots.mjs`. Browser chrome is cropped off because
 every shot already sits inside a drawn `BrowserFrame`, and the Next
 dev-tools bubble is painted out.
 
-## Synapse — 3 shots
+## Synapse — capture, then delete the data
 
-| Path | What to capture |
+Synapse had no goals, no ledger and no training history, so there was nothing
+to photograph. Its own seed scripts fill exactly that gap:
+
+```bash
+cd D:\Portfolio\synapse
+npm run seed:goals && npm run seed:day && npm run seed:gym   # already run
+npm run dev                                                   # already running on :3002
+node scripts/capture-for-portfolio.mjs                        # you sign in, it shoots
+node --env-file=.env.local scripts/teardown-seed.mjs          # removes the seed
+```
+
+`capture-for-portfolio.mjs` opens a visible window, waits at the terminal
+while you sign in, and captures `/today`, `/goals/map`, `/dashboard` and
+`/gym` in that same session. It refuses to write a file for any page that
+still reads as signed out, so a failed login leaves the placeholders alone.
+
+**`npm run wipe` is the wrong tool here and must not be used.** It empties
+the account's whole history, which on this database also means the 2,499
+rows in `nudge_evaluations` — real logged decisions, and the source of the
+numbers this case study quotes — plus `calendar_accounts`, which holds the
+live Google connection. `teardown-seed.mjs` deletes only the seven tables
+the seeds filled, all verified empty beforehand, and prints the preserved
+counts afterwards so you can see they came through.
+
+Baseline before seeding, for reference:
+
+| table | rows |
 | --- | --- |
-| `src/assets/shots/synapse/01-today-desktop.png` | `/today` — the fifteen-minute ledger, ideally on a day with visible planned/actual/unlogged variety |
-| `src/assets/shots/synapse/02-goals-desktop.png` | `/goals/map` — the goal DAG |
-| `src/assets/shots/synapse/03-dashboard-desktop.png` | `/dashboard` — the three adherence series over time |
-
-Financial figures are personal. Either pick screens without them or blur the
-amounts; the case study already declares these as redacted.
+| nudge_evaluations | 2499 |
+| nudge_deliveries | 20 |
+| categories | 10 |
+| exercises | 10 |
+| nudge_rules | 7 |
+| calendar_accounts | 1 |
+| profiles | 1 |
+| everything else | 0 |
 
 ## ICU Outcome Prediction — 2 shots
 
