@@ -10,20 +10,33 @@ the frame crops from the top.
 
 ## Two ways to produce them
 
-**Scripted (preferred).** Sign in once, then let the script take them:
-
-```bash
-node scripts/capture.mjs --login
-```
-
-Sign in to each tab it opens, close the window, then:
+**Scripted (preferred).** One command, one browser session:
 
 ```bash
 node scripts/capture.mjs --gated
 ```
 
+A visible Chrome window opens with a tab per app. Sign in to each one, come
+back to the terminal and press Enter, and it captures everything in that
+same session. Signing in and capturing have to happen in one session —
+signing in with one browser and capturing with another does not reliably
+carry the session, which is exactly how a batch of login screens once got
+written over these placeholders.
+
+Nothing is written unless the page passes an auth check first: a capture
+that lands on a login route, an identity provider, a page reading as a
+sign-in screen, or a near-empty body is skipped with a reason and leaves
+the placeholder alone.
+
 Synapse targets point at `http://localhost:3002`, so start that app first if
-you want those.
+you want those. If it is not running those three are skipped and everything
+else still works.
+
+Afterwards:
+
+```bash
+node scripts/redact-region.mjs && node scripts/optimize-shots.mjs
+```
 
 **By hand.** Take the screenshot yourself and save it over the placeholder at
 the path listed below. The filename must match exactly.

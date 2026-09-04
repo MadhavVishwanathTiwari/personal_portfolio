@@ -51,9 +51,15 @@ mobile 390x844 at DPR 2.
 ```bash
 node scripts/capture.mjs             # every public target
 node scripts/capture.mjs kfiq        # one project
-node scripts/capture.mjs --login     # sign in once, session kept in .capture-profile/
-node scripts/capture.mjs --gated     # the logged-in targets
+node scripts/capture.mjs --gated     # opens a window, waits for you to sign
+                                     # in, then captures in that same session
 ```
+
+Gated captures are guarded: a page that lands on a login route, an identity
+provider, or anything reading as a sign-in screen is skipped with a reason
+and leaves its placeholder in place. A capture that silently succeeds on a
+login page is worse than a failure, because it writes a plausible file and
+reports success.
 
 Targets are declared at the top of `scripts/capture.mjs`. Sections below the
 fold are reached by CSS selector (`anchor`), never by a pixel offset, because
