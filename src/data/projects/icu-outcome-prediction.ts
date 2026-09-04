@@ -1,6 +1,8 @@
 import type { FeaturedProject } from "../types";
-import dashboard from "@/assets/shots/icu-outcome-prediction/01-dashboard-desktop.png";
-import shap from "@/assets/shots/icu-outcome-prediction/02-shap-desktop.png";
+import paper from "@/assets/shots/icu-outcome-prediction/01-paper-desktop.png";
+import roc from "@/assets/shots/icu-outcome-prediction/02-roc-mortality-desktop.png";
+import shap from "@/assets/shots/icu-outcome-prediction/03-shap-mortality-desktop.png";
+import pipeline from "@/assets/shots/icu-outcome-prediction/04-pipeline-desktop.png";
 
 /**
  * The CV claims this beat the state of the art on 6 of 12 targets. That claim
@@ -45,7 +47,7 @@ export const icuOutcomePrediction: FeaturedProject = {
     {
       claim:
         "Both readmission targets stay in the report at 0.61 and 0.63, near chance.",
-      why: "The obvious move is to drop the two targets that make the table look worse. They stay because they are the honest finding: a first-24-hour snapshot cannot see the post-24h trajectory and the discharge decision that actually drive readmission risk. Published models reach 0.73 and above on this, and they predict at discharge rather than at admission. Keeping the failures in is what makes the other ten numbers worth reading.",
+      why: "The obvious move is to drop the two targets that make the table look worse. They stay because they are the honest finding, and because the literature agrees: readmission prediction on unselected cohorts plateaus at 0.60 to 0.65, which is exactly where these landed. A first-24-hour snapshot cannot see the post-24h trajectory or the discharge decision that actually drive readmission risk. The models that reach 0.77 predict at discharge, with information this one does not have. Reporting a ceiling you hit is more useful than quietly dropping the target.",
       tag: "trust",
     },
     {
@@ -99,18 +101,36 @@ export const icuOutcomePrediction: FeaturedProject = {
   ],
   shots: [
     {
-      src: dashboard,
-      alt: "The per-target Streamlit dashboard",
+      src: paper,
+      alt: "The first page of the IEEE-format manuscript",
       device: "desktop",
-      chrome: "streamlit / per-target metrics",
+      chrome: "ICU Patient Outcome Analysis and Prediction Using MIMIC-IV",
+      caption:
+        "The write-up, in IEEE format, with Kartikey Bhadwal, Bhavya Guleria and Saumya Kashyap, supervised by Dr Deepak Gupta. Rendered here from the submitted manuscript rather than a published PDF.",
+    },
+    {
+      src: pipeline,
+      alt: "The cohort and feature pipeline",
+      device: "desktop",
+      chrome: "pipeline / cohort to feature matrices",
+    },
+    {
+      src: roc,
+      alt: "ROC curve for in-hospital mortality",
+      device: "desktop",
+      chrome: "results / roc_curves_tuned / mortality.png",
+      caption:
+        "Mortality, the stacking ensemble on the LASSO matrix. The one number here I would defend without a footnote.",
     },
     {
       src: shap,
-      alt: "SHAP feature attributions",
+      alt: "SHAP beeswarm for the mortality meta-learner",
       device: "desktop",
-      chrome: "streamlit / SHAP attributions",
+      chrome: "results / shap / mortality_beeswarm.png",
+      caption:
+        "Note the axis labels: on a stacked target the explainer runs on the meta-learner, so these are the seven base learners, not clinical variables. It answers which model is being trusted, not which lab value drives risk.",
     },
   ],
   outcome:
-    "Delivered and evaluated externally; the panel marked it above expectations. Two things I will not claim. It is not benchmarked against published work: comparing an AUROC across different cohort definitions and splits is not a comparison, and doing it properly needs matched inclusion criteria, confidence intervals and an external cohort such as eICU. And the highest scores here are the least meaningful ones, for the window-overlap reason above. The mortality figure and the tournament are the parts I would defend.",
+    "Delivered and evaluated externally; the panel marked it above expectations. What I will not claim is a benchmark win. The paper's own related-work section cites 0.92 on MIMIC-IV mortality and a 0.60 to 0.65 plateau for readmission on unselected cohorts, which puts this work below the first and squarely inside the second. Comparing an AUROC across different cohort definitions is not a comparison anyway; doing it properly needs matched inclusion criteria, confidence intervals and an external cohort. And the highest scores here are the least meaningful ones, for the window-overlap reason above. The tournament and the mortality figure are the parts worth defending.",
 };

@@ -3,7 +3,8 @@
 **Verdict: not supported, and not constructible. It is not on the site.**
 
 You were right to be sceptical, and right to push back on my first pass — I had
-checked three targets and generalised. All twelve are below.
+checked three targets and generalised. All twelve are below, and your own
+paper's related-work section corrected two of my verdicts.
 
 ## 1. The claim exists nowhere in the project
 
@@ -26,7 +27,7 @@ Yours are the tuned AUROCs from `results/tuning_summary.json`.
 
 | Target | Yours | Closest published | Verdict |
 | --- | --- | --- | --- |
-| In-hospital mortality | 0.897 | 0.847–0.856, MIMIC-IV first-24h | **Above the number**, different cohort |
+| In-hospital mortality | 0.897 | 0.847–0.856 first-24h; 0.92 (Pang et al.) | **Between them**, different cohorts |
 | AKI onset | 0.828 | 0.806, MIMIC-IV, 24h features → 24–72h outcome | Above the number, **easier task** |
 | ARDS onset | 0.937 | 0.843–0.89, eARDS, 12h before Berlin criteria | Above the number, **much easier task** |
 | Liver injury | 0.929 | none comparable found | **Label restates the features** |
@@ -34,15 +35,26 @@ Yours are the tuned AUROCs from `results/tuning_summary.json`.
 | Need for ventilation | 0.896 | no matching target definition | Unassessable |
 | Need for vasopressors | 0.887 | no matching target definition | Unassessable |
 | Need for RRT | 0.947 | no matching target definition | Unassessable |
-| ICU readmit 48h | 0.609 | 0.726–0.771 (iREAD, at discharge) | **Clearly below** |
-| ICU readmit 7d | 0.627 | ~0.77–0.82 overall readmission | **Clearly below** |
+| ICU readmit 48h | 0.609 | 0.60–0.65 unselected cohorts | **In line** (0.73+ models predict at discharge) |
+| ICU readmit 7d | 0.627 | 0.60–0.65 unselected cohorts | **In line** |
 | LOS category | 0.775 | 0.742–0.747, but **binary** prolonged-LOS | Not comparable, multiclass macro OvR |
 | Discharge disposition | 0.821 | none found | Unassessable |
 
-Tally: **three clearly below**, **five with no comparable benchmark at all**,
+Tally: **one clearly below** (sepsis), **two in line with the literature**
+(both readmission targets), **five with no comparable benchmark at all**,
 **two above the number but on a materially easier task**, **one where the
-label restates the input**, and **one — mortality — that is genuinely the
-strongest reading here**, and even that is not like-for-like.
+label restates the input**, and **one — mortality — that sits between two
+published figures depending on which you pick.**
+
+Correction to my first pass: I had both readmission targets as clearly below.
+Your own related-work section settles it the other way — it cites a 0.60 to
+0.65 plateau for readmission on unselected cohorts, which is precisely where
+yours landed. The 0.73-plus models I compared against predict at discharge,
+with information a first-24-hour snapshot does not have. That is a ceiling
+you hit, not a miss, and the case study now says so.
+
+The same section cites Pang et al. at 0.92 on MIMIC-IV mortality, which is
+above your 0.8968. So mortality is not a clean win either.
 
 So "6 of 12" cannot be assembled even generously. You would need six targets
 that each have a published benchmark on a matching task definition, and only
@@ -69,10 +81,11 @@ easier problem than their 0.806. That is not a win.
 Yours labels ARDS if P/F ≤ 300 at any point in the stay, first 24 hours
 included. Those are different problems and yours is the easier one.
 
-**Readmission.** Worth noting in your favour: iREAD predicts at **discharge**;
-you predict from the **first 24 hours of admission**, which is far harder and
-arguably ill-posed. The comparison is unfair to you. It still does not become
-a win.
+**Readmission.** iREAD predicts at **discharge**; you predict from the **first
+24 hours of admission**, which is a harder and arguably ill-posed problem. Your
+paper cites the right comparison itself — a 0.60 to 0.65 plateau on unselected
+cohorts — and you are inside it. Not a win, but not a failure either: a ceiling
+that was hit and reported.
 
 ## 4. The structural problem underneath all of it
 
@@ -110,7 +123,8 @@ the finding that matters, and it is independent of any benchmark.
   that justifies the whole design, and it is a real finding.
 - The stacking ensemble won 10 of 12; CatBoost took both multiclass targets.
 - Mortality at 0.897 is a genuinely respectable number.
-- Both readmission targets sit near chance and the README reports them anyway.
+- Both readmission targets sit at the plateau the literature describes for
+  this setup, and the README reports them rather than dropping them.
 - An explicit leakage module exists at all, which most student work on this
   dataset does not have.
 
