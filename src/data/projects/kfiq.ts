@@ -1,11 +1,14 @@
 import type { FeaturedProject } from "../types";
 import certificate from "@/assets/credentials/cannock-internship-certificate.png";
 import hero from "@/assets/shots/kfiq/01-hero-desktop.png";
-import odds from "@/assets/shots/kfiq/02-odds-desktop.png";
-import fields from "@/assets/shots/kfiq/03-fields-desktop.png";
 import apply from "@/assets/shots/kfiq/04-apply-desktop.png";
 import heroMobile from "@/assets/shots/kfiq/05-hero-mobile.png";
-import internApp from "@/assets/shots/kfiq/06-intern-app-desktop.png";
+import browse from "@/assets/shots/kfiq/06-browse-desktop.png";
+import tasks from "@/assets/shots/kfiq/07-tasks-desktop.png";
+import submit from "@/assets/shots/kfiq/08-submit-desktop.png";
+import applications from "@/assets/shots/kfiq/09-admin-applications-desktop.png";
+import submissions from "@/assets/shots/kfiq/10-admin-submissions-desktop.png";
+import certificates from "@/assets/shots/kfiq/11-certificates-desktop.png";
 
 export const kfiq: FeaturedProject = {
   featured: true,
@@ -67,11 +70,69 @@ export const kfiq: FeaturedProject = {
     { layer: "Infra", items: ["Vercel", "Health and status endpoints", "Post-deploy smoke tests"] },
   ],
   shots: [
-    { src: hero, alt: "The KFIQ homepage", device: "desktop", chrome: "kfiq.com", caption: "Monochrome by constraint: no gradients, no neon, nothing that reads as a certificate mill." },
-    { src: odds, alt: "The acceptance-odds calculator", device: "desktop", chrome: "kfiq.com/#odds" },
-    { src: fields, alt: "The eight career tracks", device: "desktop", chrome: "kfiq.com/#fields" },
-    { src: apply, alt: "The dual-role application form", device: "desktop", chrome: "kfiq.com/#apply", caption: "One endpoint, two roles, one transaction." },
-    { src: internApp, alt: "The intern platform dashboard", device: "desktop", chrome: "kfiq-interns.vercel.app", redacted: true },
+    {
+      src: hero,
+      alt: "The KFIQ homepage",
+      device: "desktop",
+      chrome: "kfiq.com",
+      caption:
+        "Monochrome by constraint. No gradients, no neon, nothing that reads like a certificate mill to a student who has already been burned by one.",
+    },
+    {
+      src: apply,
+      alt: "The dual-role application form",
+      device: "desktop",
+      chrome: "kfiq.com/#apply",
+      caption:
+        "One endpoint serves both roles, and one Postgres transaction resolves the cohort, the referral and the duplicate check together.",
+    },
+    {
+      src: browse,
+      alt: "An intern browsing a task group",
+      device: "desktop",
+      chrome: "kfiq-interns / dashboard / browse",
+      caption:
+        "Interns pick the tasks they want. Admins assign only the ones they approve, so the two sides of that negotiation are explicit.",
+    },
+    {
+      src: tasks,
+      alt: "An intern's assigned tasks with progress",
+      device: "desktop",
+      chrome: "kfiq-interns / dashboard / tasks",
+      caption:
+        "Later tasks stay locked until the earlier ones are approved, which is what stops a track from being farmed for a certificate.",
+    },
+    {
+      src: submit,
+      alt: "Submitting work as markdown",
+      device: "desktop",
+      chrome: "kfiq-interns / submit work",
+      caption:
+        "Work is written as markdown with a live preview and PDF attachments, so what the reviewer reads is what the intern wrote.",
+    },
+    {
+      src: applications,
+      alt: "The admin applications queue",
+      device: "desktop",
+      chrome: "kfiq-interns / admin / applications",
+      caption: "Approve and assign in one action, or reject with a note.",
+    },
+    {
+      src: submissions,
+      alt: "An admin reviewing a submission",
+      device: "desktop",
+      chrome: "kfiq-interns / admin / submissions",
+      caption:
+        "The reviewer sees the rendered submission in full, and a certificate is issued automatically once every approved-for task is approved.",
+    },
+    {
+      src: certificates,
+      alt: "An earned certificate with its verification code",
+      device: "desktop",
+      chrome: "kfiq-interns / dashboard / certificates",
+      caption:
+        "The QR and the code both resolve to a public verification route that needs no account, because the person who has to trust the certificate is not the person holding it.",
+    },
     { src: heroMobile, alt: "KFIQ on a phone", device: "mobile" },
   ],
   credential: {
@@ -84,5 +145,5 @@ export const kfiq: FeaturedProject = {
     reference: "CPL-INT-2026-011 / verifiable at cannock.in",
   },
   outcome:
-    "Both applications are deployed and the platform is production-hardened. The programme is pre-launch, so the traction figures on the public site are deliberate placeholders until the first cohort completes. The numbers above are build facts; there are no user numbers to quote yet, and I would rather say that than round one up.",
+    "Both applications are deployed and the platform is production-hardened. The platform screenshots here are from the test deployment against seeded records and my own account, not from a live cohort. The programme is pre-launch, so the traction figures on the public site are deliberate placeholders until the first cohort completes. The numbers above are build facts; there are no user numbers to quote yet, and I would rather say that than round one up.",
 };

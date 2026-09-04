@@ -18,7 +18,6 @@ const CHROME =
   "C:/Program Files/Google/Chrome/Application/chrome.exe";
 
 const PENDING = [
-  { project: "kfiq", file: "06-intern-app-desktop.png", label: "kfiq-interns — the intern dashboard" },
   { project: "synapse", file: "01-today-desktop.png", label: "/today — the fifteen-minute ledger" },
   { project: "synapse", file: "02-goals-desktop.png", label: "/goals/map — the goal DAG" },
   { project: "synapse", file: "03-dashboard-desktop.png", label: "/dashboard — adherence over time" },

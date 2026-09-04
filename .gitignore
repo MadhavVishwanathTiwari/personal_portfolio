@@ -48,3 +48,8 @@ Internship_Certificate_*.png
 
 .vercel
 .env*
+
+# Source screenshots dropped in the root for import; the processed copies
+# live in src/assets/shots and are what the site uses.
+img*.jpeg
+WhatsApp Image*.jpeg

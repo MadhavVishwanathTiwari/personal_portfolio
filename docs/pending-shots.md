@@ -56,11 +56,14 @@ The case study deliberately shows only these two. `/write`, `/leads` and
 `/queue` were dropped: two screens that carry the argument beat five that
 repeat it.
 
-## KFIQ intern platform — 1 shot
+## KFIQ — done
 
-| Path | What to capture |
-| --- | --- |
-| `src/assets/shots/kfiq/06-intern-app-desktop.png` | `kfiq-interns.vercel.app` signed in — the intern dashboard or the task-group tree. A seeded demo account is better here than a real student. |
+Nine shots: two from the marketing site, six from the platform, one mobile.
+The platform set came from the test deployment (`kfiq-test.vercel.app`)
+against seeded records and the owner's own account, imported and de-chromed
+by `scripts/import-kfiq-shots.mjs`. Browser chrome is cropped off because
+every shot already sits inside a drawn `BrowserFrame`, and the Next
+dev-tools bubble is painted out.
 
 ## Synapse — 3 shots
 

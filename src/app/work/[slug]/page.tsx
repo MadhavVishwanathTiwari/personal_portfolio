@@ -84,28 +84,20 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         </section>
       )}
 
-      {/* Two columns only pay for themselves when there are enough shots to
-          fill the second one. With one left over, the image column renders a
-          thumbnail beside four paragraphs and a column of dead space, so the
-          section stacks instead and the shot gets the full width. */}
+      {/* Prose at a reading measure, then the screenshots at full width.
+          An earlier version put the shots in a side column, which turned a
+          dense admin screen into an illegible thumbnail and left the prose
+          column empty for most of the scroll. A case study is the one place
+          a screenshot should be big enough to actually read. */}
       <section className="shell mt-24">
         <Kicker>How it works</Kicker>
-        {restShots.length > 1 ? (
-          <div className="mt-6 grid gap-12 lg:grid-cols-[minmax(0,34rem)_1fr] lg:gap-16">
-            <Prose paragraphs={project.approach} />
-            <div className="min-w-0">
-              <ShotGallery shots={restShots} />
-            </div>
-          </div>
-        ) : (
-          <div className="mt-6 space-y-14">
-            <Prose paragraphs={project.approach} />
-            <ShotGallery
-              shots={restShots}
-              sizes="(max-width: 1200px) 100vw, 1100px"
-            />
-          </div>
-        )}
+        <div className="mt-6 space-y-16">
+          <Prose paragraphs={project.approach} />
+          <ShotGallery
+            shots={restShots}
+            sizes="(max-width: 1200px) 100vw, 1100px"
+          />
+        </div>
       </section>
 
       <section className="shell mt-24 md:mt-32">

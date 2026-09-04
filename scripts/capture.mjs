@@ -66,8 +66,6 @@ const TARGETS = [
   { project: "priya-tripathi", name: "06-webgl-deck", url: "https://shivoham-universal-demo.vercel.app/", viewport: DESKTOP, settle: 7000 },
 
   { project: "kfiq", name: "01-hero", url: KFIQ, viewport: DESKTOP },
-  { project: "kfiq", name: "02-odds", url: KFIQ, viewport: DESKTOP, anchor: "#odds" },
-  { project: "kfiq", name: "03-fields", url: KFIQ, viewport: DESKTOP, anchor: "#fields" },
   { project: "kfiq", name: "04-apply", url: KFIQ, viewport: DESKTOP, anchor: "#apply" },
   { project: "kfiq", name: "05-hero", url: KFIQ, viewport: MOBILE },
 
@@ -92,7 +90,6 @@ const TARGETS = [
     fill: { selector: 'input[type="search"]', value: "example.com" },
   },
 
-  { project: "kfiq", name: "06-intern-app", url: "https://kfiq-interns.vercel.app/", viewport: DESKTOP, gated: true },
 
   // Synapse has no public deployment. Start it locally on :3002 first.
   { project: "synapse", name: "01-today", url: `${SYNAPSE}/today`, viewport: DESKTOP, gated: true },
