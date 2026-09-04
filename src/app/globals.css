@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Design tokens.
+
+   Deliberately distinct from the other systems in this portfolio:
+   the Outreach CRM is blue-on-black (#08090a / #58a6ff) and
+   P4 Realty is gold-on-black (#0a0a0b / #c9a96e). Nothing here is
+   blue and nothing here is gold. Cool green-black canvas, one volt
+   accent, and a monospace that does real work.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* Canvas */
+  --color-void: #0a0c0b;
+  --color-panel: #101312;
+  --color-panel-2: #171b19;
+  --color-hairline: rgba(232, 236, 233, 0.08);
+  --color-hairline-lit: rgba(198, 242, 78, 0.24);
+
+  /* Type. Ratios are measured against --color-void. */
+  --color-text: #e8ece9; /* 15.7:1 */
+  --color-text-dim: #9aa39d; /*  7.1:1 */
+  --color-text-faint: #7a8880; /*  4.9:1 — the darker #5f6b64 fails AA at 3.4:1 */
+
+  /* Accent. One, and only one. */
+  --color-volt: #c6f24e;
+  --color-volt-dim: #8fae37;
+  --color-volt-wash: rgba(198, 242, 78, 0.1);
+
+  /* Status. Semantic only — never decorative. */
+  --color-live: #c6f24e;
+  --color-wip: #f0b429;
+  --color-internal: #7a8880;
+  --color-research: #9d8df1;
+
+  /* Motion */
+  --ease-out-fast: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Rhythm */
+  --spacing-rail: 17rem;
+}
+
+@theme inline {
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+
+html {
+  background-color: var(--color-void);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-volt);
+  color: var(--color-void);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-volt);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Firefox. Chromium is handled by the ::-webkit rules below. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-panel-2) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-panel-2);
+  border: 3px solid var(--color-void);
+  border-radius: 999px;
+}
+
+/* ── Utilities ──────────────────────────────────────────────── */
+
+/* The site's signature micro-label: 11px uppercase mono. */
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Content column shared by every section and case-study block. */
+@utility shell {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    padding-inline: 2rem;
+  }
+}
+
+/* A one-pixel rule that fades out to the right. Used under section heads. */
+@utility rule-fade {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--color-hairline-lit),
+    var(--color-hairline) 30%,
+    transparent
+  );
+}

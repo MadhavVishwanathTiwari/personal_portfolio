@@ -1,0 +1,61 @@
+import { ImageResponse } from "next/og";
+import { getBySlug, getFeatured } from "@/lib/projects";
+import { profile } from "@/data/profile";
+import { STATUS_LABEL } from "@/data/types";
+
+export const alt = "Case study";
+export const size = { width: 1200, height: 630 };
+export const contentType = "image/png";
+
+export function generateStaticParams() {
+  return getFeatured().map((p) => ({ slug: p.slug }));
+}
+
+export default async function OgImage(props: PageProps<"/work/[slug]">) {
+  const { slug } = await props.params;
+  const project = getBySlug(slug);
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          background: "#0a0c0b",
+          padding: 72,
+          fontFamily: "sans-serif",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+            color: "#7a8880",
+            fontSize: 22,
+            letterSpacing: 3,
+            textTransform: "uppercase",
+          }}
+        >
+          <div style={{ width: 40, height: 2, background: "#8fae37" }} />
+          {project ? `${project.role} · ${STATUS_LABEL[project.status]}` : "Case study"}
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+          <div style={{ color: "#e8ece9", fontSize: 82, lineHeight: 1.05 }}>
+            {project?.title ?? "Work"}
+          </div>
+          <div style={{ color: "#9aa39d", fontSize: 30, lineHeight: 1.4, maxWidth: 940 }}>
+            {project?.pitch ?? ""}
+          </div>
+        </div>
+
+        <div style={{ color: "#7a8880", fontSize: 24 }}>{profile.name}</div>
+      </div>
+    ),
+    size,
+  );
+}
