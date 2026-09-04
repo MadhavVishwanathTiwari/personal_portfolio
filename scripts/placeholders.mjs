@@ -22,6 +22,7 @@ const PENDING = [
   { project: "outreach-ops-crm", file: "02-leads-desktop.png", label: "/leads — the virtualised grid" },
   { project: "outreach-ops-crm", file: "03-queue-desktop.png", label: "/queue — scheduled sends" },
   { project: "outreach-ops-crm", file: "04-pipeline-desktop.png", label: "/pipeline — the stage board" },
+  { project: "outreach-ops-crm", file: "05-contacts-desktop.png", label: "/contacts — filtered to the demo set" },
   { project: "kfiq", file: "06-intern-app-desktop.png", label: "kfiq-interns — the intern dashboard" },
   { project: "synapse", file: "01-today-desktop.png", label: "/today — the fifteen-minute ledger" },
   { project: "synapse", file: "02-goals-desktop.png", label: "/goals/map — the goal DAG" },

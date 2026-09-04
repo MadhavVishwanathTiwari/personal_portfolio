@@ -3,6 +3,7 @@ import write from "@/assets/shots/outreach-ops-crm/01-write-desktop.png";
 import leads from "@/assets/shots/outreach-ops-crm/02-leads-desktop.png";
 import queue from "@/assets/shots/outreach-ops-crm/03-queue-desktop.png";
 import pipeline from "@/assets/shots/outreach-ops-crm/04-pipeline-desktop.png";
+import contacts from "@/assets/shots/outreach-ops-crm/05-contacts-desktop.png";
 
 export const outreachOpsCrm: FeaturedProject = {
   featured: true,
@@ -66,6 +67,7 @@ export const outreachOpsCrm: FeaturedProject = {
     { src: leads, alt: "The virtualised lead grid", device: "desktop", chrome: "crm.autoreceptionist.io/leads", redacted: true },
     { src: queue, alt: "The scheduled send queue", device: "desktop", chrome: "crm.autoreceptionist.io/queue", redacted: true },
     { src: pipeline, alt: "The pipeline board", device: "desktop", chrome: "crm.autoreceptionist.io/pipeline", redacted: true },
+    { src: contacts, alt: "The contacts directory", device: "desktop", chrome: "crm.autoreceptionist.io/contacts", caption: "Who a person is lives here; what the machine should do with them lives on Leads.", redacted: true },
   ],
   outcome:
     "In daily use and not publicly reachable, so there is no link to click here. It replaced the spreadsheet completely and has run the outbound pipeline since. Screenshots are from the live application with prospect data removed.",

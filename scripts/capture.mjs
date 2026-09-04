@@ -75,6 +75,19 @@ const TARGETS = [
   { project: "outreach-ops-crm", name: "03-queue", url: "https://crm.autoreceptionist.io/queue", viewport: DESKTOP, gated: true },
   { project: "outreach-ops-crm", name: "04-pipeline", url: "https://crm.autoreceptionist.io/pipeline", viewport: DESKTOP, gated: true },
 
+  // The contacts directory is a list of real named people, so it is captured
+  // filtered to example.com, which is exactly the set of seeded demo leads
+  // from migration 0037 and nothing else. The search box is a substring
+  // match over work_email, so this is a hard filter rather than a visual one.
+  {
+    project: "outreach-ops-crm",
+    name: "05-contacts",
+    url: "https://crm.autoreceptionist.io/contacts",
+    viewport: DESKTOP,
+    gated: true,
+    fill: { selector: 'input[type="search"]', value: "example.com" },
+  },
+
   { project: "kfiq", name: "06-intern-app", url: "https://kfiq-interns.vercel.app/", viewport: DESKTOP, gated: true },
 
   // Synapse has no public deployment. Run it locally on :3002 and sign in
@@ -108,6 +121,13 @@ async function shoot(browser, t) {
   try {
     await page.setViewport(t.viewport);
     await page.goto(t.url, { waitUntil: "networkidle2", timeout: 60_000 });
+
+    if (t.fill) {
+      await page.waitForSelector(t.fill.selector, { timeout: 20_000 });
+      await page.click(t.fill.selector);
+      await page.type(t.fill.selector, t.fill.value, { delay: 12 });
+      await new Promise((r) => setTimeout(r, 800));
+    }
 
     if (t.anchor) {
       const found = await page.evaluate((sel) => {
