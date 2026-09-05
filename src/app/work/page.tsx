@@ -11,7 +11,7 @@ import { Reveal } from "@/components/motion";
 export const metadata: Metadata = buildMetadata({
   title: "Work",
   description:
-    "Seven production systems and four smaller builds, with the engineering decisions behind each one.",
+    "Eight case studies and four smaller builds, with the engineering decisions behind each one.",
   path: "/work",
 });
 
@@ -27,7 +27,7 @@ export default function WorkPage() {
           Everything, with the reasoning attached.
         </h1>
         <p className="mt-6 max-w-[56ch] text-[15px] leading-relaxed text-text-dim">
-          Seven case studies and four smaller builds. Where a system is behind a
+          Eight case studies and four smaller builds. Where a system is behind a
           login there is no link, and the screenshots say so.
         </p>
       </header>

@@ -65,9 +65,18 @@ const TARGETS = [
   { project: "priya-tripathi", name: "05-hero", url: PRIYA, viewport: MOBILE },
   { project: "priya-tripathi", name: "06-webgl-deck", url: "https://shivoham-universal-demo.vercel.app/", viewport: DESKTOP, settle: 7000 },
 
-  { project: "kfiq", name: "01-hero", url: KFIQ, viewport: DESKTOP },
-  { project: "kfiq", name: "04-apply", url: KFIQ, viewport: DESKTOP, anchor: "#apply" },
-  { project: "kfiq", name: "05-hero", url: KFIQ, viewport: MOBILE },
+  { project: "kfiq-site", name: "01-hero", url: KFIQ, viewport: DESKTOP },
+  { project: "kfiq-site", name: "02-apply", url: KFIQ, viewport: DESKTOP, anchor: "#apply" },
+  { project: "kfiq-site", name: "03-hero", url: KFIQ, viewport: MOBILE },
+
+  // The certificate verifier is public by design: capturing it without a
+  // session is the entire point of the shot.
+  {
+    project: "kfiq-platform",
+    name: "07-verify",
+    url: "https://kfiq-interns.vercel.app/verify/KFIQ-2026-UBPSZG",
+    viewport: DESKTOP,
+  },
 
   { project: "p4-realty", name: "01-hero", url: P4, viewport: DESKTOP },
   { project: "p4-realty", name: "02-properties", url: `${P4}properties`, viewport: DESKTOP },

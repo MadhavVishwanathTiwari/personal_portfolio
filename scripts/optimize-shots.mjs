@@ -6,9 +6,16 @@
  *  1. Cap the width at 2200px. The widest slot any shot renders into is about
  *     1100 CSS pixels, so 2200 is already 2x for a retina display and a
  *     2880px capture is carrying pixels nobody will ever see.
- *  2. Re-encode as a palette PNG. Screenshots are mostly flat interface
- *     colour, which quantises almost losslessly, and it typically takes 80%
- *     off the file.
+ *  2. Re-encode as a palette PNG *when the image is flat interface colour*.
+ *     Screenshots quantise almost losslessly and it typically takes 80% off
+ *     the file. Photographs do not: quantising to 256 colours is a lossy
+ *     step, and next/image then encodes AVIF on top of it, so a photographic
+ *     source would take two lossy generations where it shows most. Those
+ *     keep full colour and only get the width cap.
+ *
+ * Nothing here changes what a visitor downloads. next.config.ts declares
+ * AVIF and WebP, and next/image content-negotiates per request, so the PNGs
+ * in this directory are build inputs and repo weight, never payload.
  *
  * Filenames and extensions are deliberately unchanged, so every import keeps
  * working and "drop a PNG over the placeholder" stays true.
@@ -25,6 +32,21 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ASSETS = path.join(ROOT, "src", "assets");
 
 const MAX_WIDTH = 2200;
+
+/**
+ * Sources that are photographs rather than interface, listed rather than
+ * detected. Detection was tried and does not work here: the test has to run
+ * on the file as it stands, and a file that has already been through a
+ * palette pass looks flat by construction, so the classifier agrees with
+ * whatever the last run did. Six paths are cheaper to read than a heuristic
+ * that is wrong in a way nobody notices.
+ */
+const PHOTOGRAPHIC = [
+  "p4-realty",
+  "priya-tripathi/01-hero",
+  "priya-tripathi/05-hero",
+  "priya-tripathi/06-webgl",
+].map((p) => p.split("/").join(path.sep));
 const DRY = process.argv.includes("--dry-run");
 
 async function* walk(dir) {
@@ -63,10 +85,17 @@ for await (const file of walk(ASSETS)) {
 
   const image = sharp(file);
   const meta = await image.metadata();
+  const width = Math.min(meta.width ?? MAX_WIDTH, MAX_WIDTH);
+
+  const photographic = PHOTOGRAPHIC.some((frag) => file.includes(frag));
 
   const out = await image
-    .resize({ width: Math.min(meta.width ?? MAX_WIDTH, MAX_WIDTH), withoutEnlargement: true })
-    .png({ palette: true, quality: 82, effort: 10 })
+    .resize({ width, withoutEnlargement: true })
+    .png(
+      photographic
+        ? { compressionLevel: 9, effort: 10 }
+        : { palette: true, quality: 82, effort: 10 },
+    )
     .toBuffer();
 
   // Never make a file bigger. A placeholder is already tiny and flat.
@@ -78,8 +107,9 @@ for await (const file of walk(ASSETS)) {
 
   after += out.length;
   const pct = Math.round((1 - out.length / original) * 100);
+  const mode = photographic ? "photo" : "flat";
   console.log(
-    `  ${DRY ? "would" : "wrote"} ${path.relative(ROOT, file)}  ${mb(original)} -> ${mb(out.length)} MB  (-${pct}%)`,
+    `  ${DRY ? "would" : "wrote"} ${path.relative(ROOT, file)}  ${mb(original)} -> ${mb(out.length)} MB  (-${pct}%, ${mode})`,
   );
   if (!DRY) await writeFile(file, out);
 }

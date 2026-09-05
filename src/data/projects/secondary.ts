@@ -2,12 +2,12 @@ import type { SecondaryProject } from "../types";
 
 /**
  * Smaller work. These carry no case study on purpose: one interesting fact
- * each is the whole point, and padding them out would dilute the seven.
+ * each is the whole point, and padding them out would dilute the eight.
  */
 
 export const arLeadFinder: SecondaryProject = {
   featured: false,
-  order: 8,
+  order: 9,
   slug: "ar-lead-finder",
   title: "Lead Finder",
   pitch: "Internal lead sourcing and enrichment for AutoReceptionist.",
@@ -25,7 +25,7 @@ export const arLeadFinder: SecondaryProject = {
 
 export const endoleExtractor: SecondaryProject = {
   featured: false,
-  order: 9,
+  order: 10,
   slug: "endole-extractor",
   title: "Endole Extractor",
   pitch: "A UK company-data scraper with a human in the loop.",
@@ -43,7 +43,7 @@ export const endoleExtractor: SecondaryProject = {
 
 export const kfiqProgressTracker: SecondaryProject = {
   featured: false,
-  order: 10,
+  order: 11,
   slug: "kfiq-progress-tracker",
   title: "KFIQ Daily Progress",
   pitch: "A standup tracker for the KFIQ core team.",
@@ -61,7 +61,7 @@ export const kfiqProgressTracker: SecondaryProject = {
 
 export const shivohamWebgl: SecondaryProject = {
   featured: false,
-  order: 11,
+  order: 12,
   slug: "shivoham-webgl",
   title: "Shivoham WebGL Deck",
   pitch: "The pitch build that won the consultancy site.",

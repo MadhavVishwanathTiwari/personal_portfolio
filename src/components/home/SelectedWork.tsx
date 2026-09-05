@@ -10,7 +10,7 @@ export function SelectedWork() {
     <Section
       id="work"
       label="Selected work"
-      title="Seven systems, and why they are built the way they are."
+      title="Eight systems, and why they are built the way they are."
       lede="Each of these ran into a problem that had an obvious solution and a correct one. The case studies are about the difference."
     >
       <div className="divide-y divide-hairline">

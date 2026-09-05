@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Wraps a screenshot in a neutral chrome bar. Seven case studies means seven
+ * Wraps a screenshot in a neutral chrome bar. Eight case studies means eight
  * different design systems on one page; the frame is what keeps a warm cream
  * site and a gold one sitting calmly on a green-black canvas instead of
  * fighting it, and it prints the live URL next to the claim.

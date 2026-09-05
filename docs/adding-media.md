@@ -39,6 +39,20 @@ printed in the frame's title bar.
 780 × 1688 (390 × 844 at 2x). Viewport captures, never full-page — a
 6000px-tall image destroys the page rhythm.
 
+**Format.** Always drop a PNG. It is not what gets served: `next.config.ts`
+declares `formats: ["image/avif", "image/webp"]`, and `next/image`
+content-negotiates per request, so a visitor gets AVIF where the browser
+takes it and WebP otherwise. The PNG is a build input and repo weight, never
+payload — which is why the source format question is about not losing
+information rather than about bytes on the wire.
+
+`optimize-shots.mjs` caps width at 2200 and re-encodes. Interface screenshots
+become palette PNGs, which is lossy in principle and invisible in practice on
+flat colour. Photographs are listed explicitly in that script's
+`PHOTOGRAPHIC` array and keep full colour instead, because quantising to 256
+colours and *then* encoding AVIF stacks two lossy generations exactly where
+banding shows. Add to that list when you add a photographic source.
+
 **Redaction.** Anything with real names, emails, phone numbers or personal
 finances gets blurred or replaced *in the file*, not with a CSS overlay: an
 overlay leaves the original one "view source" away. Then set
@@ -79,6 +93,22 @@ Keep local files under about 8 MB and encode as H.264 mp4 at 1440 × 900 or
 1920 × 1080. Anything longer than roughly ninety seconds belongs on Loom
 instead — a visitor will not watch it, and it will be the heaviest thing on
 the page.
+
+ffmpeg is installed on this machine. Two commands cover it:
+
+```bash
+# H.264, capped at 1440 wide, yuv420p so every browser decodes it.
+# faststart moves the index to the front so playback starts before the
+# download finishes — without it a visitor waits for the whole file.
+ffmpeg -i raw.mov -vf "scale=1440:-2" -c:v libx264 -crf 23 -preset slow   -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart public/media/walkthrough.mp4
+
+# A poster frame, so the player is not a black rectangle before play.
+ffmpeg -i public/media/walkthrough.mp4 -ss 00:00:02 -frames:v 1   src/assets/shots/<slug>/poster.png
+```
+
+`-crf 23` is the quality dial: lower is better and bigger, 18 is close to
+visually lossless, 28 starts to show. Check the output size before committing;
+if it is over 8 MB, shorten the clip rather than raising the CRF.
 
 The player has no autoplay and no poster frame by design: a case study page
 that starts making noise is a page people close.

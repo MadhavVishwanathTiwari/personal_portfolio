@@ -2,7 +2,8 @@ import type { Project } from "../types";
 import { autoreceptionist } from "./autoreceptionist";
 import { outreachOpsCrm } from "./outreach-ops-crm";
 import { priyaTripathi } from "./priya-tripathi";
-import { kfiq } from "./kfiq";
+import { kfiqPlatform } from "./kfiq-platform";
+import { kfiqSite } from "./kfiq-site";
 import { p4Realty } from "./p4-realty";
 import { synapse } from "./synapse";
 import { icuOutcomePrediction } from "./icu-outcome-prediction";
@@ -18,7 +19,8 @@ export const projects: Project[] = [
   autoreceptionist,
   outreachOpsCrm,
   priyaTripathi,
-  kfiq,
+  kfiqPlatform,
+  kfiqSite,
   p4Realty,
   synapse,
   icuOutcomePrediction,

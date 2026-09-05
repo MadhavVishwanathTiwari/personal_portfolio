@@ -6,7 +6,7 @@ import gym from "@/assets/shots/synapse/04-gym-desktop.png";
 
 export const synapse: FeaturedProject = {
   featured: true,
-  order: 7,
+  order: 8,
   slug: "synapse",
   title: "Synapse",
   pitch:

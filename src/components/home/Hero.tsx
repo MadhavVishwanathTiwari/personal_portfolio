@@ -38,7 +38,7 @@ export function Hero() {
         delay={0.28}
         className="mt-6 max-w-[56ch] text-[15px] leading-relaxed text-text-dim"
       >
-        Six production systems and one research project. Four you can open
+        Seven production systems and one research project. Five you can open
         right now. Each one below carries the decisions I would defend in a
         code review.
       </Rise>

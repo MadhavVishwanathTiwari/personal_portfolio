@@ -34,7 +34,7 @@ if (reducedMotion) {
     { name: "prefers-reduced-motion", value: "reduce" },
   ]);
 }
-await page.goto("http://localhost:3000" + route, {
+await page.goto((process.env.PORT ? `http://localhost:${process.env.PORT}` : "http://localhost:3000") + route, {
   waitUntil: "networkidle2",
   timeout: 90_000,
 });

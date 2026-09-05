@@ -18,12 +18,15 @@ const CHROME =
   "C:/Program Files/Google/Chrome/Application/chrome.exe";
 
 const PENDING = [
+  {
+    project: "kfiq-platform",
+    file: "10-onboarding-desktop.png",
+    label: "onboarding — the parsed resume step",
+  },
   { project: "synapse", file: "01-today-desktop.png", label: "/today — the fifteen-minute ledger" },
   { project: "synapse", file: "02-goals-desktop.png", label: "/goals/map — the goal DAG" },
   { project: "synapse", file: "03-dashboard-desktop.png", label: "/dashboard — adherence over time" },
   { project: "synapse", file: "04-gym-desktop.png", label: "/gym — twelve weeks of training" },
-  { project: "icu-outcome-prediction", file: "01-dashboard-desktop.png", label: "Streamlit — per-target metrics" },
-  { project: "icu-outcome-prediction", file: "02-shap-desktop.png", label: "SHAP — feature attributions" },
 ];
 
 const html = (label, file) => `<!doctype html><html><body style="margin:0">

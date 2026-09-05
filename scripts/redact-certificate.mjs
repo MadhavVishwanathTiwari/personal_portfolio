@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer-core";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = path.join(ROOT, "Internship_Certificate_Madhavendra_Tiwari-1.png");
+const SRC = path.join(ROOT, "_incoming", "Internship_Certificate_Madhavendra_Tiwari-1.png");
 const OUT_DIR = path.join(ROOT, "src", "assets", "credentials");
 const OUT = path.join(OUT_DIR, "cannock-internship-certificate.png");
 

@@ -11,7 +11,7 @@ import pipeline from "@/assets/shots/icu-outcome-prediction/04-pipeline-desktop.
  */
 export const icuOutcomePrediction: FeaturedProject = {
   featured: true,
-  order: 6,
+  order: 7,
   slug: "icu-outcome-prediction",
   title: "ICU Outcome Prediction",
   pitch:

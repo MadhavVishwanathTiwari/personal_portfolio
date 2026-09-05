@@ -5,7 +5,7 @@ import { Reveal } from "@/components/motion";
  * case studies describe. Nothing here is a growth number.
  */
 const facts = [
-  { value: "7", label: "systems shipped" },
+  { value: "8", label: "systems shipped" },
   { value: "66", label: "Postgres tables designed" },
   { value: "75", label: "migrations shipped" },
   { value: "1", label: "engineer" },
