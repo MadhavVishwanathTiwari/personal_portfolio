@@ -47,6 +47,7 @@ const IMPORTS = [
   { from: "certverified.png", to: "07-verify-desktop.png", chrome: 92, right: 26, badge: true },
   { from: "importcsv3.jpeg", to: "08-import-desktop.png", chrome: 40, right: 14, badge: true },
   { from: "debugendpoint.png", to: "09-debug-desktop.png", chrome: 90, right: 22, badge: false },
+  { from: "onboarding4.1.png", to: "10-onboarding-desktop.png", chrome: 96, right: 26, badge: true },
 ];
 
 /** The apps are near-white; this matches their page background. */

@@ -9,6 +9,7 @@ import certificates from "@/assets/shots/kfiq-platform/06-certificates-desktop.p
 import verify from "@/assets/shots/kfiq-platform/07-verify-desktop.png";
 import importCsv from "@/assets/shots/kfiq-platform/08-import-desktop.png";
 import debugOverlay from "@/assets/shots/kfiq-platform/09-debug-desktop.png";
+import onboarding from "@/assets/shots/kfiq-platform/10-onboarding-desktop.png";
 
 /**
  * The application. The marketing site that feeds it is a separate repo and a
@@ -34,7 +35,7 @@ export const kfiqPlatform: FeaturedProject = {
   problem:
     "The programme needs applications, cohorts, referral tracking, a task hierarchy, submission review and certification to behave as one system rather than five spreadsheets that disagree. Harder than any of those individually: the certificate at the end has to mean something to a recruiter who has never heard of KFIQ, has no account, and has every reason to assume a free internship certificate is worthless.",
   approach: [
-    "Onboarding is four steps: set a password, upload a resume, have it parsed by an external API, then confirm what it extracted. Each step unlocks the next, and the parse has explicit pending, processing and failed states rather than a spinner that can lie.",
+    "Onboarding is four steps: set a password, upload a resume, have it parsed by SharpAPI, then confirm what it extracted. Each step unlocks the next, the parse has explicit pending, processing and failed states rather than a spinner that can lie, and it reports its own result — how many items it found, and every one of them tagged with the fact that a parser wrote it.",
     "The curriculum is a hierarchy: task groups contain subgroups contain tasks, linked to a cohort. Admins build it by CSV import with a preview that reports exactly what will be created before anything is written. Interns then browse, pick the tasks they want, and apply; admins approve and assign only the ones they agree to, so both sides of that negotiation are explicit.",
     "Work is submitted as markdown with a live preview and PDF attachments, reviewed in full by an admin, and answered with threaded feedback. When every task an intern was approved for is approved, a certificate image is generated and a QR code is minted against a public verification route.",
     "It is the second version. The first used hand-rolled bcrypt and JWT cookie sessions, and a single monolithic schema file that had drifted out of sync with production — it was missing a table the running application depended on. The rewrite moved authentication to Supabase Auth, replaced the schema file with numbered tracked migrations, and only then added certificates, the verifier and CSV import.",
@@ -59,6 +60,12 @@ export const kfiqPlatform: FeaturedProject = {
       claim: "Admin access needs an allowlist row and a matching email domain, not either one.",
       why: "This is a system where an admin can approve work and issue credentials. A single check is a single mistake away from minting one: an allowlist row added to the wrong address, or a domain check defeated by anyone who can receive mail at that domain. Requiring both means neither error is sufficient on its own.",
       tag: "correctness",
+    },
+    {
+      claim:
+        "Everything the resume parser writes is tagged with where it came from.",
+      why: "A parser is a machine guessing at a PDF, and it will get things wrong. Writing its output into the profile unlabelled means nobody can later tell an extracted skill from one the student typed, and the first wrong guess quietly becomes part of their record. Every parsed field carries source = resume, so the student is correcting a claim rather than editing a fact, and a reviewer looking at a profile can always see which half a machine wrote.",
+      tag: "trust",
     },
     {
       claim: "The platform reports its own build SHA and dependency health over HTTP.",
@@ -125,6 +132,14 @@ export const kfiqPlatform: FeaturedProject = {
       chrome: "kfiq-interns / admin / submissions",
       caption:
         "The reviewer sees the rendered submission in full, and the certificate issues automatically once every approved-for task is approved.",
+    },
+    {
+      src: onboarding,
+      alt: "The resume parsing step of onboarding",
+      device: "desktop",
+      chrome: "kfiq-interns / onboarding",
+      caption:
+        "Step three of four. The parse reports what it extracted rather than a spinner, and every field it writes is labelled source = resume, so the student is confirming a machine's claim rather than editing something presented as fact.",
     },
     {
       src: importCsv,

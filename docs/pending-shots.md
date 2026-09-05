@@ -56,25 +56,13 @@ The case study deliberately shows only these two. `/write`, `/leads` and
 `/queue` were dropped: two screens that carry the argument beat five that
 repeat it.
 
-## KFIQ Platform — one left
+## KFIQ — done
 
-Nine shots are in, including the public certificate verifier, the CSV
-curriculum import preview and the in-app debug overlay. One slot is still a
-placeholder:
-
-| Path | What to capture |
-| --- | --- |
-| `src/assets/shots/kfiq-platform/10-onboarding-desktop.png` | The four-step onboarding with the **parsed resume on screen**. Nothing in the set shows SharpAPI actually doing its job, and it is the only third-party integration here doing something non-trivial. Use the seeded `Test Intern` rather than a real student. |
-
-Sources for the imported nine live in `_incoming/` and are re-runnable with
-`node scripts/import-kfiq-shots.mjs`, which crops browser chrome and paints
-out the dev-tools bubble.
-
-**Not used from the batch, and why:** `linktaskgrptocohort.jpeg` carries a
-hand-drawn annotation circle; `linktaskgrptocohort2.jpeg` is a partial crop;
-`importcsv`, `importcsv2`, `confirmimport` and `importcomplete` are earlier
-steps of the flow `importcsv3` already tells; `viewcert` and
-`certificategenerated` duplicate the certificates shot.
+Three shots on the site, ten on the platform, including the public
+certificate verifier, the resume parse step, the CSV curriculum import and
+the in-app debug overlay. Sources live in `_incoming/` and the whole set is
+re-runnable with `node scripts/import-kfiq-shots.mjs`, which crops browser
+chrome and paints out the dev-tools bubble.
 
 ## Synapse — capture, then delete the data
 
