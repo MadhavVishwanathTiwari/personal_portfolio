@@ -18,10 +18,6 @@ const CHROME =
   "C:/Program Files/Google/Chrome/Application/chrome.exe";
 
 const PENDING = [
-  { project: "synapse", file: "01-today-desktop.png", label: "/today — the fifteen-minute ledger" },
-  { project: "synapse", file: "02-goals-desktop.png", label: "/goals/map — the goal DAG" },
-  { project: "synapse", file: "03-dashboard-desktop.png", label: "/dashboard — adherence over time" },
-  { project: "synapse", file: "04-gym-desktop.png", label: "/gym — twelve weeks of training" },
 ];
 
 const html = (label, file) => `<!doctype html><html><body style="margin:0">

@@ -1,7 +1,7 @@
 import type { FeaturedProject } from "../types";
-import today from "@/assets/shots/synapse/01-today-desktop.png";
-import goals from "@/assets/shots/synapse/02-goals-desktop.png";
-import dashboard from "@/assets/shots/synapse/03-dashboard-desktop.png";
+import dashboard from "@/assets/shots/synapse/01-dashboard-desktop.png";
+import week from "@/assets/shots/synapse/02-week-desktop.png";
+import goals from "@/assets/shots/synapse/03-goals-desktop.png";
 import gym from "@/assets/shots/synapse/04-gym-desktop.png";
 
 export const synapse: FeaturedProject = {
@@ -67,36 +67,39 @@ export const synapse: FeaturedProject = {
   ],
   shots: [
     {
-      src: today,
-      alt: "The fifteen-minute time ledger",
-      device: "desktop",
-      chrome: "synapse / today",
-      caption:
-        "Ninety-six slots. Inside the waking window every one is planned, actual, or explicitly unlogged, so a day with gaps reports the gaps.",
-    },
-    {
-      src: goals,
-      alt: "The goal graph",
-      device: "desktop",
-      chrome: "synapse / goals / map",
-      caption:
-        "A directed graph rather than a tree, because one piece of work usually serves more than one goal. Contribution weights sum to at most one per child so a rollup cannot double-count.",
-    },
-    {
       src: dashboard,
-      alt: "Adherence over time",
+      alt: "The Synapse dashboard",
       device: "desktop",
       chrome: "synapse / dashboard",
       caption:
-        "Coverage, fidelity and allocation, plotted separately and never averaged into one number.",
+        "Coverage, fidelity and allocation as three separate tiles and two separate series, never averaged. Note the allocation card arguing with itself: sleep and meals count as productive on purpose, so the number says where the hours went rather than whether they were well spent.",
+    },
+    {
+      src: week,
+      alt: "A week of plan beside actual",
+      device: "desktop",
+      chrome: "synapse / week",
+      caption:
+        "The closed ledger, seven days wide: plan on the left of each day, what happened on the right. One day carries no plan at all and reports no fidelity rather than zero.",
+    },
+    {
+      src: goals,
+      alt: "The goal graph plotted against time",
+      device: "desktop",
+      chrome: "synapse / goals / map",
+      caption:
+        "Bar width is duration, height is horizon, line weight is contribution. A goal serving two roots is drawn once with an edge to each, and the footer admits when a goal is too small to draw at this zoom rather than dropping it silently.",
+      redacted: true,
     },
     {
       src: gym,
-      alt: "Twelve weeks of training",
+      alt: "Estimated one-rep max and ninety days of volume load",
       device: "desktop",
       chrome: "synapse / gym",
+      caption:
+        "Two one-rep-max formulas shown side by side with the gap between them stated, because a single estimate hides how much it is guessing. The second series on the chart is labelled modelled: it is a fraction of bodyweight, not something anyone measured.",
     },
   ],
   outcome:
-    "Finished, and about to be used in anger: I start logging against it this week. There is no public deployment and no sign-up, by design. The screens here were captured against seeded acceptance data, which was deleted straight afterwards so that every number the dashboard reports from now on is a number about a real day. It is in this portfolio because it is the clearest example of how I think about data correctness when nobody is forcing me to care.",
+    "Finished, and about to be used in anger: I start logging against it this week. There is no public deployment and no sign-up, by design. Every number on these screens comes from seeded acceptance data that was deleted immediately after the capture, so that from now on the dashboard only ever reports real days. One goal label is blurred because it is a private one, not because it is anyone else's. It is in this portfolio because it is the clearest example of how I think about data correctness when nobody is forcing me to care.",
 };

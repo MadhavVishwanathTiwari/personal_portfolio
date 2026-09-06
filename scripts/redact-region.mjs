@@ -42,6 +42,20 @@ const REDACTIONS = {
     },
   ],
 
+  "shots/synapse/03-goals-desktop.png": [
+    {
+      // One of the seeded goals is "Drop out of college". It is the owner's
+      // own aspiration, not third-party data, but this page is going to
+      // prospective clients and that is a sentence a stranger will read
+      // uncharitably. Delete this entry to show it.
+      note: "one personal goal label",
+      top: 71.5,
+      left: 17.4,
+      width: 11.8,
+      height: 9.0,
+      mode: "pixelate",
+    },
+  ],
 };
 
 const pct = (value, total) => Math.round((value / 100) * total);
