@@ -21,7 +21,7 @@ export function About() {
             />
           </div>
 
-          <dl className="mt-6 divide-y divide-hairline border-y border-hairline text-[13px]">
+          <dl className="mt-6 divide-y divide-hairline border-y border-hairline text-[14px]">
             <div className="flex items-baseline justify-between gap-4 py-3">
               <dt className="mono-label whitespace-nowrap text-text-faint">Based in</dt>
               <dd className="text-right text-text-dim">{profile.location}</dd>

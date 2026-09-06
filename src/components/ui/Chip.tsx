@@ -12,7 +12,7 @@ export function Chip({
     <span
       className={cn(
         "inline-flex items-center rounded-full border border-hairline px-2.5 py-1",
-        "font-mono text-[11px] leading-none text-text-dim",
+        "font-mono text-[12px] leading-none text-text-dim",
         className,
       )}
     >

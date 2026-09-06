@@ -37,7 +37,7 @@ export function CaseHeader({ project }: { project: FeaturedProject }) {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-2 rounded border border-hairline px-4 py-2.5 font-mono text-[12px] text-text transition-colors hover:border-hairline-lit hover:text-volt"
+                className="group inline-flex items-center gap-2 rounded border border-hairline px-4 py-2.5 font-mono text-[13px] text-text transition-colors hover:border-hairline-lit hover:text-volt"
               >
                 {link.label}
                 <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-px group-hover:translate-x-px" />

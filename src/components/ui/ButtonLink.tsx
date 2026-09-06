@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "ghost";
 
 const base =
-  "inline-flex items-center gap-2 rounded px-4 py-2.5 font-mono text-[12px] " +
+  "inline-flex items-center gap-2 rounded px-4 py-2.5 font-mono text-[13px] " +
   "tracking-[0.06em] transition-colors duration-200";
 
 const variants: Record<Variant, string> = {

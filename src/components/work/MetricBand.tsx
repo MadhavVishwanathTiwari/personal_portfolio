@@ -13,7 +13,7 @@ export function MetricBand({ metrics }: { metrics: Metric[] }) {
             <span className="block font-mono text-2xl leading-none text-volt">
               {m.value}
             </span>
-            <span className="mt-2.5 block text-[13px] leading-snug text-text-faint">
+            <span className="mt-2.5 block text-[14px] leading-snug text-text-dim">
               {m.label}
             </span>
           </dd>

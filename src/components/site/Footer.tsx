@@ -8,19 +8,19 @@ export function Footer() {
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <a
             href={`mailto:${profile.email}`}
-            className="font-mono text-[12px] text-text-dim transition-colors hover:text-volt"
+            className="font-mono text-[13px] text-text-dim transition-colors hover:text-volt"
           >
             {profile.email}
           </a>
           <a
             href={profile.phoneHref}
-            className="font-mono text-[12px] text-text-dim transition-colors hover:text-volt"
+            className="font-mono text-[13px] text-text-dim transition-colors hover:text-volt"
           >
             {profile.phone}
           </a>
           <Link
             href="/work"
-            className="font-mono text-[12px] text-text-dim transition-colors hover:text-volt"
+            className="font-mono text-[13px] text-text-dim transition-colors hover:text-volt"
           >
             All work
           </Link>

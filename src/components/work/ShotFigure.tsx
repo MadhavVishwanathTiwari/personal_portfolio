@@ -47,7 +47,7 @@ export function ShotFigure({
       {(shot.caption || shot.redacted) && (
         <figcaption className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
           {shot.caption && (
-            <span className="max-w-[68ch] text-[13px] leading-relaxed text-text-faint">
+            <span className="max-w-[68ch] text-[14px] leading-relaxed text-text-dim">
               {shot.caption}
             </span>
           )}

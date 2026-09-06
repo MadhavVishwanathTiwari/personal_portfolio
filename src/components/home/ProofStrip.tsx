@@ -22,7 +22,7 @@ export function ProofStrip() {
               <span className="block font-mono text-2xl leading-none text-text">
                 {f.value}
               </span>
-              <span className="mt-2.5 block text-[13px] text-text-faint">
+              <span className="mt-2.5 block text-[14px] text-text-dim">
                 {f.label}
               </span>
             </dd>

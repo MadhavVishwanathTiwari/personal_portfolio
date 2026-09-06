@@ -47,7 +47,7 @@ export function Nav() {
               <li key={l.href} className={cn(!l.always && "hidden sm:block")}>
                 <Link
                   href={l.href}
-                  className="mono-label rounded px-3 py-2 text-text-faint transition-colors hover:text-text"
+                  className="mono-label rounded px-3 py-2 text-text-dim transition-colors hover:text-text"
                 >
                   {l.label}
                 </Link>

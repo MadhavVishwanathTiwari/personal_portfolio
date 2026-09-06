@@ -117,12 +117,12 @@ p {
 
 /* ── Utilities ──────────────────────────────────────────────── */
 
-/* The site's signature micro-label: 11px uppercase mono. */
+/* The site's signature micro-label: 12px uppercase mono. */
 @utility mono-label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  line-height: 1.15;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
